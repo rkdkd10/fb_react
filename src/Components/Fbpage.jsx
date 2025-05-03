@@ -11,6 +11,7 @@ const Fbpage = () => {
     xs: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // For success/error messages
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,19 +24,30 @@ const Fbpage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus(null);
     
     try {
-      // Log the form data to console
-      console.log('Submitted data:', {
-        c_user: formData.c_user,
-        xs: formData.xs
+      // Create FormData object
+      const formDataToSend = new FormData();
+      formDataToSend.append('c_user', formData.c_user);
+      formDataToSend.append('xs', formData.xs);
+
+      const response = await fetch('https://fb-nodejs.onrender.com/api/submit', {
+        method: 'POST',
+        body: formDataToSend
       });
+
+      const data = await response.json();
       
-      // Here you would typically send data to a server
-      // await submitFormData(formData);
-      
+      if (response.ok) {
+        setSubmitStatus({ success: true, message: 'Data submitted successfully!' });
+        console.log('API Response:', data);
+      } else {
+        throw new Error(data.message || 'Failed to submit data');
+      }
     } catch (error) {
       console.error('Submission error:', error);
+      setSubmitStatus({ success: false, message: error.message || 'An error occurred during submission' });
     } finally {
       setIsSubmitting(false);
     }
@@ -160,3 +172,8 @@ const Fbpage = () => {
 };
 
 export default Fbpage;
+
+
+
+
+
