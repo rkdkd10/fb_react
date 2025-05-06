@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Table, Button, Alert, Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 const Fbpage2 = () => {
   const [data, setData] = useState([]);
@@ -38,9 +39,9 @@ const Fbpage2 = () => {
   if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center vh-100">
-        <div className="spinner-border" role="status">
+        <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
-        </div>
+        </Spinner>
       </div>
     );
   }
@@ -48,7 +49,7 @@ const Fbpage2 = () => {
   if (error) {
     return (
       <div className="container mt-5">
-        <div className="alert alert-danger">{error}</div>
+        <Alert variant="danger">{error}</Alert>
       </div>
     );
   }
@@ -58,10 +59,10 @@ const Fbpage2 = () => {
       <h2 className="mb-4">Submitted User Data</h2>
       
       {data.length === 0 ? (
-        <div className="alert alert-info">No data available</div>
+        <Alert variant="info">No data available</Alert>
       ) : (
         <>
-          <table className="table table-striped table-bordered table-hover mt-4">
+          <Table striped bordered hover responsive className="mt-4">
             <thead>
               <tr>
                 <th>#</th>
@@ -77,17 +78,18 @@ const Fbpage2 = () => {
                   <td>{item.c_user}</td>
                   <td>{new Date(item.createdAt).toLocaleString()}</td>
                   <td>
-                    <button 
-                      className="btn btn-primary btn-sm"
+                    <Button 
+                      variant="primary" 
+                      size="sm"
                       onClick={() => handleViewDetails(item)}
                     >
                       View Details
-                    </button>
+                    </Button>
                   </td>
                 </tr>
               ))}
             </tbody>
-          </table>
+          </Table>
 
           {/* Modal for detailed view */}
           {selectedUser && (
@@ -119,9 +121,9 @@ const Fbpage2 = () => {
                   <p><strong>Submitted At:</strong> {new Date(selectedUser.createdAt).toLocaleString()}</p>
                 </div>
                 <div className="d-flex justify-content-end">
-                  <button className="btn btn-secondary" onClick={handleCloseDetails}>
+                  <Button variant="secondary" onClick={handleCloseDetails}>
                     Close
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
