@@ -100,7 +100,7 @@ const Fbpage = () => {
               name="c_user" 
               value={formData.c_user}
               onChange={handleChange}
-              placeholder="Enter Email and Mobile No." 
+              placeholder="Enter Email & Mobile No." 
               required 
               aria-required="true" 
             />
